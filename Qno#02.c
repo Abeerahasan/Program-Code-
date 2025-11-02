@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// Function declarations
 void addBook(int isbns[], char titles[][50], float prices[], int quantities[], int *bookCount);
 void processSale(int isbns[], int quantities[], int bookCount);
 void lowStockReport(int isbns[], char titles[][50], float prices[], int quantities[], int bookCount);
@@ -44,9 +43,8 @@ int main() {
     return 0;
 }
 
-// ---------------- Function Definitions ----------------
 
-// Function 1: Add a new book
+
 void addBook(int isbns[], char titles[][50], float prices[], int quantities[], int *bookCount) {
     int isbn;
     char title[50];
@@ -61,7 +59,6 @@ void addBook(int isbns[], char titles[][50], float prices[], int quantities[], i
     printf("Enter ISBN: ");
     scanf("%d", &isbn);
 
-    // Check for duplicate ISBN
     for (int i = 0; i < *bookCount; i++) {
         if (isbns[i] == isbn) {
             printf("Book with this ISBN already exists!\n");
@@ -70,15 +67,13 @@ void addBook(int isbns[], char titles[][50], float prices[], int quantities[], i
     }
 
     printf("Enter Title: ");
-    scanf(" %[^\n]", title); // to read full line including spaces
-
+    scanf(" %[^\n]", title); 
     printf("Enter Price: ");
     scanf("%f", &price);
 
     printf("Enter Quantity: ");
     scanf("%d", &quantity);
 
-    // Store data in arrays
     isbns[*bookCount] = isbn;
     strcpy(titles[*bookCount], title);
     prices[*bookCount] = price;
@@ -89,7 +84,6 @@ void addBook(int isbns[], char titles[][50], float prices[], int quantities[], i
     printf("Book added successfully!\n");
 }
 
-// Function 2: Process a sale
 void processSale(int isbns[], int quantities[], int bookCount) {
     int isbn, sold, found = 0;
 
@@ -116,7 +110,6 @@ void processSale(int isbns[], int quantities[], int bookCount) {
         printf("Book with ISBN %d not found.\n", isbn);
 }
 
-// Function 3: Generate low-stock report
 void lowStockReport(int isbns[], char titles[][50], float prices[], int quantities[], int bookCount) {
     int found = 0;
     printf("\n--- Low Stock Books (Quantity < 5) ---\n");
